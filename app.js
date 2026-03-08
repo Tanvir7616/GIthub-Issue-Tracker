@@ -77,18 +77,33 @@ const isOpen = issue.status === "open";
 
 const borderTop = isOpen ? "border-t-[#10B981]" : "border-t-[#8B5CF6]";
 
+
+// STATUS ICON
+const statusIcon = isOpen
+? `<img src="assets/Open-Status.png" class="w-6 h-6 object-contain">`
+: `<img src="assets/Closed-Status .png" class="w-6 h-6 object-contain">`;
+
+
+// PRIORITY COLOR (FIGMA STYLE)
+let prioColor =
+issue.priority === "high"
+? "bg-[#FEF2F2] text-[#EF4444]"
+: issue.priority === "medium"
+? "bg-[#FFFBEB] text-[#D97706]"
+: "bg-slate-100 text-slate-500";
+
+
+// LABELS
 const tag1 = issue.labels?.[0] || "BUG";
 const tag2 = issue.labels?.[1] || "HELP WANTED";
 
-const statusIcon = isOpen
-? `<img src="assets/Open-Status.png" class="w-6 h-6">`
-: `<img src="assets/Closed-Status .png" class="w-6 h-6">`;
 
 const card = document.createElement("div");
 
 card.className = `bg-white rounded-xl border border-slate-100 border-t-4 ${borderTop} shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col h-full`;
 
 card.onclick = () => openModal(issue);
+
 
 card.innerHTML = `
 
@@ -98,17 +113,17 @@ card.innerHTML = `
 
 ${statusIcon}
 
-<span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100">
+<span class="px-3 py-1 text-[10px] font-extrabold rounded-full uppercase tracking-wider ${prioColor}">
 ${issue.priority}
 </span>
 
 </div>
 
-<h3 class="font-bold text-slate-800 text-[16px] mb-3">
+<h3 class="font-bold text-slate-800 text-[16px] mb-3 line-clamp-2">
 ${issue.title}
 </h3>
 
-<p class="text-slate-400 text-sm mb-6">
+<p class="text-slate-400 text-sm mb-6 line-clamp-2">
 ${issue.description}
 </p>
 
