@@ -81,12 +81,8 @@ const tag1 = issue.labels?.[0] || "BUG";
 const tag2 = issue.labels?.[1] || "HELP WANTED";
 
 const statusIcon = isOpen
-? `<div class="w-6 h-6 border-2 border-dashed border-[#10B981] rounded-full flex items-center justify-center">
-<div class="w-2 h-2 bg-[#10B981] rounded-full"></div>
-</div>`
-: `<div class="w-6 h-6 bg-[#8B5CF6] rounded-full flex items-center justify-center text-white">
-✓
-</div>`;
+? `<img src="assets/Open-Status.png" class="w-6 h-6">`
+: `<img src="assets/Closed-Status .png" class="w-6 h-6">`;
 
 const card = document.createElement("div");
 
