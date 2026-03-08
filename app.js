@@ -3,7 +3,7 @@ const API = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 let allIssues = [];
 
 
-// LOGIN
+// login js conditions
 function login(){
 
 const username = document.getElementById("username")?.value;
@@ -24,7 +24,8 @@ alert("Invalid Credentials");
 
 
 
-// LOAD ISSUES
+// loading isssuees
+
 async function loadIssues(){
 
 try{
@@ -47,7 +48,7 @@ console.log(err);
 
 
 
-// ISSUE COUNT
+// issue count number
 function updateStats(issues){
 
 const count = document.getElementById("issueCount");
@@ -62,7 +63,8 @@ count.innerText = `${issues.length} Issues`;
 
 
 
-// DISPLAY CARDS
+// card display
+
 function displayIssues(issues){
 
 const container = document.getElementById("issuesContainer");
@@ -78,13 +80,13 @@ const isOpen = issue.status === "open";
 const borderTop = isOpen ? "border-t-[#10B981]" : "border-t-[#8B5CF6]";
 
 
-// STATUS ICON
+// status pics
 const statusIcon = isOpen
 ? `<img src="assets/Open-Status.png" class="w-6 h-6 object-contain">`
 : `<img src="assets/Closed-Status .png" class="w-6 h-6 object-contain">`;
 
 
-// PRIORITY COLOR (FIGMA STYLE)
+// priority color 
 let prioColor =
 issue.priority === "high"
 ? "bg-[#FEF2F2] text-[#EF4444]"
@@ -93,7 +95,8 @@ issue.priority === "high"
 : "bg-slate-100 text-slate-500";
 
 
-// LABELS
+// bug, help label add
+
 const tag1 = issue.labels?.[0] || "BUG";
 const tag2 = issue.labels?.[1] || "HELP WANTED";
 
@@ -163,7 +166,7 @@ container.appendChild(card);
 
 
 
-// TAB FILTER
+// tab filter
 function changeTab(type,btn){
 
 document.querySelectorAll(".tab").forEach(t => {
@@ -185,7 +188,7 @@ updateStats(filtered);
 
 
 
-// FIGMA STYLE MODAL
+// model
 function openModal(issue){
 
 const modal = document.getElementById("modal");
@@ -303,7 +306,7 @@ document.getElementById("modal").classList.add("hidden");
 
 
 
-// SEARCH
+// search
 async function searchIssue(){
 
 const q = document.getElementById("searchInput").value;
@@ -319,7 +322,8 @@ updateStats(data.data);
 
 
 
-// PAGE LOAD
+// full paage load\
+
 window.onload = () => {
 
 if(document.getElementById("issuesContainer")){
